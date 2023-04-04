@@ -6,12 +6,13 @@ import { getPosts } from "./controller/postController.js";
 
 dotenv.config();
 const PORT = process.env.DB_PORT;
-
 const server = express();
 
 // midd
 server.use(express.json());
-server.use(cors({ origin: "http://localhost:5174" }));
+server.use(
+  cors({ origin: ["http://localhost:5173", "http://127.0.0.1:5173"] })
+);
 
 // route
 server.get("/posts", getPosts);
